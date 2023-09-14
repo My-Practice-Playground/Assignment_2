@@ -1,16 +1,16 @@
 package com.example.assignment;
 
 import com.example.assignment.config.WebAppConfig;
-import com.example.assignment.config.WebAppRootConfig;
+import com.example.assignment.config.WebRootConfig;
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.ServletRegistration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{WebAppRootConfig.class};
+        return new Class[]{WebRootConfig.class};
     }
 
     @Override

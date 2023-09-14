@@ -5,8 +5,8 @@ import com.example.assignment.repo.ProjectRepository;
 import com.example.assignment.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
 @Service
 @Transactional
@@ -17,6 +17,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public String saveProject(Project project) {
         projectRepository.save(project);
+        System.out.println("service impl - done");
         return "done";
     }
 }
