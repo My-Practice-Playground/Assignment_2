@@ -1,10 +1,7 @@
 package com.example.assignment.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -16,14 +13,17 @@ public class Project implements SuperEntity {
     String description;
     @Column(nullable = false)
     Double price;
+    @ManyToOne
+    Techlead techlead;
 
     public Project() {
     }
 
-    public Project(String id, String description, Double price) {
+    public Project(String id, String description, Double price, Techlead techlead) {
         this.id = id;
         this.description = description;
         this.price = price;
+        this.techlead = techlead;
     }
 
     public String getId() {
@@ -50,12 +50,16 @@ public class Project implements SuperEntity {
         this.price = price;
     }
 
+    public Techlead getTechlead() {
+        return techlead;
+    }
+
+    public void setTechlead(Techlead techlead) {
+        this.techlead = techlead;
+    }
+
     @Override
     public String toString() {
-        return "Project{" +
-                "id='" + id + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
+        return "Project{" + "id='" + id + '\'' + ", description='" + description + '\'' + ", price=" + price + ", techlead=" + techlead + '}';
     }
 }

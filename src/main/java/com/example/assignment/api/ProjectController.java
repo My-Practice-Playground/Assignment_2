@@ -16,7 +16,9 @@ public class ProjectController {
 
     @PostMapping
     String saveProject(@RequestBody ProjectDto project) {
-        return project.toString();
+        System.out.println("Controller : " + project);
+        String s = projectService.saveProject(project);
+        return s;
     }
 
 
