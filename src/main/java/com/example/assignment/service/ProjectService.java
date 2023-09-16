@@ -1,15 +1,13 @@
 package com.example.assignment.service;
 
 import com.example.assignment.dto.ProjectDto;
-import com.example.assignment.entity.Project;
-
-import java.util.Optional;
 
 public interface ProjectService {
-    String saveProject(ProjectDto dto);
-    void updateProject(ProjectDto dto);
+    String save(ProjectDto dto);
 
-    void deleteProject(String id);
+    void update(ProjectDto dto);
+
+    void delete(String id);
 
     ProjectDto view(String id);
 }

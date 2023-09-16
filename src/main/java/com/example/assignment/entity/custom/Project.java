@@ -1,6 +1,7 @@
-package com.example.assignment.entity;
+package com.example.assignment.entity.custom;
 
 
+import com.example.assignment.entity.SuperEntity;
 import jakarta.persistence.*;
 
 @Entity

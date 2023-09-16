@@ -15,19 +15,19 @@ public class ProjectController {
 
     @PostMapping
     String saveProject(@RequestBody ProjectDto project) {
-        projectService.saveProject(project);
+        projectService.save(project);
         return "saved!";
     }
 
     @DeleteMapping(params = "id")
     private String delete(String id) {
-        projectService.deleteProject(id);
+        projectService.delete(id);
         return "deleted!";
     }
 
     @PutMapping
     private String update(@RequestBody ProjectDto projectDto) {
-        projectService.updateProject(projectDto);
+        projectService.update(projectDto);
         return "updated!";
     }
 

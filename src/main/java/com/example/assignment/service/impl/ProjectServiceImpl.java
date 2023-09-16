@@ -1,8 +1,8 @@
-package com.example.assignment.service.util;
+package com.example.assignment.service.impl;
 
 import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.dto.TechleadDto;
-import com.example.assignment.entity.Project;
+import com.example.assignment.entity.custom.Project;
 import com.example.assignment.repo.ProjectRepository;
 import com.example.assignment.service.ProjectService;
 import org.modelmapper.ModelMapper;
@@ -22,7 +22,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 
     @Override
-    public String saveProject(ProjectDto dto) {
+    public String save(ProjectDto dto) {
         System.out.print("service impl: " + dto);
         Project entity = new Project();
         entity.setId(dto.id());
@@ -34,13 +34,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void updateProject(ProjectDto dto) {
+    public void update(ProjectDto dto) {
         if (!projectRepository.existsById(dto.id())) throw new RuntimeException("Project not found !");
         projectRepository.updateDescriptionAndPriceById(dto.description(), dto.price(), dto.id());
     }
 
     @Override
-    public void deleteProject(String id) {
+    public void delete(String id) {
         if (!projectRepository.existsById(id)) throw new RuntimeException("Project not found !");
         Project project = new Project();
         project.setId(id);
