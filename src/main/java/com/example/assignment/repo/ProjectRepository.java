@@ -17,4 +17,6 @@ public interface ProjectRepository extends JpaRepository<Project, String> {
 
     Project save(Project entity);
 
+    Project getProjectById(String id);
+
 }

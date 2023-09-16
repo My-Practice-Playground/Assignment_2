@@ -1,9 +1,7 @@
 package com.example.assignment.api;
 
 import com.example.assignment.dto.ProjectDto;
-import com.example.assignment.entity.Project;
 import com.example.assignment.service.ProjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,7 +32,7 @@ public class ProjectController {
     }
 
     @GetMapping(params = "id")
-    private String view(String id) {
+    private String viewProject(String id) {
         return null;
     }
 }

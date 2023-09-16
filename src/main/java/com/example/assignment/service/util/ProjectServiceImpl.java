@@ -3,7 +3,6 @@ package com.example.assignment.service.util;
 import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.dto.TechleadDto;
 import com.example.assignment.entity.Project;
-import com.example.assignment.entity.Techlead;
 import com.example.assignment.repo.ProjectRepository;
 import com.example.assignment.service.ProjectService;
 import org.modelmapper.ModelMapper;
@@ -36,15 +35,33 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void updateProject(ProjectDto dto) {
-        if(!projectRepository.existsById(dto.id())) throw new RuntimeException("Project not found !");
+        if (!projectRepository.existsById(dto.id())) throw new RuntimeException("Project not found !");
         projectRepository.updateDescriptionAndPriceById(dto.description(), dto.price(), dto.id());
     }
 
     @Override
     public void deleteProject(String id) {
-        if(!projectRepository.existsById(id)) throw new RuntimeException("Project not found !");
+        if (!projectRepository.existsById(id)) throw new RuntimeException("Project not found !");
         Project project = new Project();
         project.setId(id);
         projectRepository.delete(project);
+    }
+
+    @Override
+    public ProjectDto view(String id) {
+        if (!projectRepository.existsById(id)) throw new RuntimeException("Project not found !");
+        Project project = projectRepository.getProjectById(id);
+        return new ProjectDto(project.getId(), project.getDescription(), project.getPrice(), getTechlead(project));
+    }
+
+    private TechleadDto getTechlead(Project project) {
+        return (project.getTechlead() == null)
+                ? null
+                : new TechleadDto(
+                        project.getTechlead().getId(),
+                project.getTechlead().getName(),
+                project.getTechlead().getSalary(),
+                null
+        );
     }
 }
