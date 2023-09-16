@@ -1,5 +1,6 @@
 package com.example.assignment.api;
 
+import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.entity.Project;
 import com.example.assignment.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +15,9 @@ public class ProjectController {
     }
 
     @PostMapping
-    String saveProject(@RequestBody Project project) {
-        return projectService.saveProject(project);
+    String saveProject(@RequestBody ProjectDto project) {
+        return project.toString();
     }
 
-    @DeleteMapping
-    void saveProject() {
-        System.out.println("Delete");
-    }
+
 }

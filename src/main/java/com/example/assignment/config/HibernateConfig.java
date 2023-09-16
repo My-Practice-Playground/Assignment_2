@@ -1,6 +1,5 @@
 package com.example.assignment.config;
 
-import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +22,7 @@ import java.util.Map;
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories("com.example.assignment.repo")
 public class HibernateConfig {
+
     public final Environment env;
 
     @Autowired
@@ -30,32 +30,18 @@ public class HibernateConfig {
         this.env = env;
     }
 
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource){
-        LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
-        lcemfb.setDataSource(dataSource);
-        lcemfb.setPackagesToScan("com.example.assignment.entity");
-        lcemfb.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        System.out.println(lcemfb);
-        return lcemfb;
-    }
-
-
     // Factory create
-//    @Bean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-//        LocalContainerEntityManagerFactoryBean emf =
-//                new LocalContainerEntityManagerFactoryBean();
-//        emf.setDataSource(dataSource);
-//        //emf.setPackagesToScan("com.example.assignment.entity");
-//        //emf.setPackagesToScan("com/example/assignment/entity");
-////        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-////        emf.setJpaVendorAdapter(vendorAdapter);
-////        emf.setJpaPropertyMap(hibernateProperties()); // Hibernate property map
-////        System.out.println(emf);
-//        return emf;
-//    }
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        LocalContainerEntityManagerFactoryBean emf =
+                new LocalContainerEntityManagerFactoryBean();
+        emf.setDataSource(dataSource);
+        emf.setPackagesToScan("com.example.assignment.entity");
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        emf.setJpaVendorAdapter(vendorAdapter);
+        emf.setJpaPropertyMap(hibernateProperties()); // Hibernate property map
+        return emf;
+    }
 
     // Data Source create
     @Bean
@@ -69,12 +55,12 @@ public class HibernateConfig {
     }
 
     // Transaction
-//    @Bean
-//    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-//        JpaTransactionManager transactionManager = new JpaTransactionManager();
-//        transactionManager.setEntityManagerFactory(emf);
-//        return transactionManager;
-//    }
+    @Bean
+    public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean emf) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(emf.getObject());
+        return transactionManager;
+    }
 
     // Load Hibernate Properties
     private Map<String, String> hibernateProperties() {

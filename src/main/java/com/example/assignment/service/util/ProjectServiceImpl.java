@@ -1,5 +1,6 @@
 package com.example.assignment.service.util;
 
+import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.entity.Project;
 import com.example.assignment.repo.ProjectRepository;
 import com.example.assignment.service.ProjectService;
@@ -15,9 +16,14 @@ public class ProjectServiceImpl implements ProjectService {
     ProjectRepository projectRepository;
 
     @Override
-    public String saveProject(Project project) {
-        projectRepository.save(project);
+    public String saveProject(ProjectDto dto) {
+
         System.out.println("service impl - done");
         return "done";
+    }
+
+    @Override
+    public void updateProject(ProjectDto dto, String id) {
+
     }
 }
