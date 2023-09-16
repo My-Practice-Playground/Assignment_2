@@ -22,15 +22,19 @@ public class ProjectController {
     }
 
     @DeleteMapping(params = "id")
-    private String delete(String id){
+    private String delete(String id) {
         projectService.deleteProject(id);
         return "deleted!";
     }
 
     @PutMapping
-    private String update(@RequestBody ProjectDto projectDto){
+    private String update(@RequestBody ProjectDto projectDto) {
         projectService.updateProject(projectDto);
         return "updated!";
     }
 
+    @GetMapping(params = "id")
+    private String view(String id) {
+        return null;
+    }
 }
