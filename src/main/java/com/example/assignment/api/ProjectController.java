@@ -33,6 +33,7 @@ public class ProjectController {
 
     @GetMapping(params = "id")
     private String viewProject(String id) {
-        return null;
+        ProjectDto dto = projectService.view(id);
+        return dto.toString();
     }
 }
