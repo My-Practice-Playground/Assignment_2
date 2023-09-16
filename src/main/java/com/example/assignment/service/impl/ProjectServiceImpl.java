@@ -17,9 +17,6 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
-    @Autowired
-    private ModelMapper mapper;
-
 
     @Override
     public String save(ProjectDto dto) {
