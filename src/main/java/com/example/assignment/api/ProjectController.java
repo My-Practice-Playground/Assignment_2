@@ -3,6 +3,7 @@ package com.example.assignment.api;
 import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.entity.Project;
 import com.example.assignment.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,10 +17,10 @@ public class ProjectController {
 
     @PostMapping
     String saveProject(@RequestBody ProjectDto project) {
-        System.out.println("Controller : " + project);
-        String s = projectService.saveProject(project);
-        return s;
+//        System.out.println("Controller : " + project);
+        return project.toString();
     }
+
 
 
 }

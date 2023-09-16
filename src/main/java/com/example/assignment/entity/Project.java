@@ -3,7 +3,6 @@ package com.example.assignment.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "project")
 public class Project implements SuperEntity {

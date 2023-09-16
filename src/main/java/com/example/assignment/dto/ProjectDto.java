@@ -1,4 +1,6 @@
 package com.example.assignment.dto;
 
-public record ProjectDto(String id,String description,Double price) {
+import com.example.assignment.entity.Techlead;
+
+public record ProjectDto(String id, String description, Double price, Techlead techlead) {
 }
