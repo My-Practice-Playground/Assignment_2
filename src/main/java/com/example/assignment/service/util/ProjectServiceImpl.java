@@ -35,8 +35,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void updateProject(ProjectDto dto, String id) {
-        if(!projectRepository.existsById(id)) throw new RuntimeException("Project not found !");
+    public void updateProject(ProjectDto dto) {
+        if(!projectRepository.existsById(dto.id())) throw new RuntimeException("Project not found !");
         projectRepository.updateDescriptionAndPriceById(dto.description(), dto.price(), dto.id());
     }
 

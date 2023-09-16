@@ -5,7 +5,7 @@ import com.example.assignment.entity.Project;
 
 public interface ProjectService {
     String saveProject(ProjectDto dto);
-    void updateProject(ProjectDto dto,String id);
+    void updateProject(ProjectDto dto);
 
     void deleteProject(String id);
 }
