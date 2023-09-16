@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 public class Techlead {
-    @OneToMany(targetEntity = Project.class, mappedBy = "techlead", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Project.class, mappedBy = "techlead", cascade = CascadeType.REMOVE)
     List<Project> projectList = new ArrayList<>();
     @Id
     private String id;

@@ -7,5 +7,5 @@ public interface ProjectService {
     String saveProject(ProjectDto dto);
     void updateProject(ProjectDto dto,String id);
 
-
+    void deleteProject(String id);
 }

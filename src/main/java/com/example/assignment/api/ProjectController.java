@@ -17,10 +17,15 @@ public class ProjectController {
 
     @PostMapping
     String saveProject(@RequestBody ProjectDto project) {
-//        System.out.println("Controller : " + project);
+        projectService.saveProject(project);
         return project.toString();
     }
 
+    @DeleteMapping(params = "id")
+    private String delete(String id){
+        projectService.deleteProject(id);
+        return "done";
+    }
 
 
 }
