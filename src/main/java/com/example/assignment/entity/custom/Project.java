@@ -14,12 +14,12 @@ public class Project implements SuperEntity {
     @Column(nullable = false)
     Double price;
     @ManyToOne
-    Techlead techlead;
+    TechLead techlead;
 
     public Project() {
     }
 
-    public Project(String id, String description, Double price, Techlead techlead) {
+    public Project(String id, String description, Double price, TechLead techlead) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -50,11 +50,11 @@ public class Project implements SuperEntity {
         this.price = price;
     }
 
-    public Techlead getTechlead() {
+    public TechLead getTechlead() {
         return techlead;
     }
 
-    public void setTechlead(Techlead techlead) {
+    public void setTechlead(TechLead techlead) {
         this.techlead = techlead;
     }
 

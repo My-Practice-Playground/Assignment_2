@@ -1,7 +1,7 @@
 package com.example.assignment.service.impl;
 
 import com.example.assignment.dto.ProjectDto;
-import com.example.assignment.dto.TechleadDto;
+import com.example.assignment.dto.TechLeadDto;
 import com.example.assignment.entity.custom.Project;
 import com.example.assignment.repo.ProjectRepository;
 import com.example.assignment.service.ProjectService;
@@ -54,10 +54,10 @@ public class ProjectServiceImpl implements ProjectService {
         return new ProjectDto(project.getId(), project.getDescription(), project.getPrice(), getTechlead(project));
     }
 
-    private TechleadDto getTechlead(Project project) {
+    private TechLeadDto getTechlead(Project project) {
         return (project.getTechlead() == null)
                 ? null
-                : new TechleadDto(
+                : new TechLeadDto(
                         project.getTechlead().getId(),
                 project.getTechlead().getName(),
                 project.getTechlead().getSalary(),

@@ -1,15 +1,13 @@
 package com.example.assignment.entity.custom;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Techlead {
+@Table(name = "techlead")
+public class TechLead {
     @OneToMany(targetEntity = Project.class, mappedBy = "techlead", cascade = CascadeType.REMOVE)
     List<Project> projectList = new ArrayList<>();
     @Id
@@ -17,10 +15,10 @@ public class Techlead {
     private String name;
     private Double salary;
 
-    public Techlead() {
+    public TechLead() {
     }
 
-    public Techlead(String id, String name, Double salary, List<Project> projectList) {
+    public TechLead(String id, String name, Double salary, List<Project> projectList) {
         this.id = id;
         this.name = name;
         this.salary = salary;
@@ -61,6 +59,6 @@ public class Techlead {
 
     @Override
     public String toString() {
-        return "Techlead{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", salary=" + salary + '}';
+        return "TechLead{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", salary=" + salary + '}';
     }
 }
