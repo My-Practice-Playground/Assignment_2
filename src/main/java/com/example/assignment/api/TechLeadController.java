@@ -23,8 +23,14 @@ public class TechLeadController {
         return "Deleted!";
     }
     @GetMapping(params = "id")
-    private String viewProject(String id) {
+    private String view(String id) {
         TechLeadDto dto = techLeadService.view(id);
         return dto.toString();
+    }
+
+    @PutMapping
+    private String update(@RequestBody TechLeadDto dto){
+        techLeadService.update(dto);
+        return "updated!";
     }
 }
