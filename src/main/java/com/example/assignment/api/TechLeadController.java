@@ -1,5 +1,6 @@
 package com.example.assignment.api;
 
+import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.dto.TechLeadDto;
 import com.example.assignment.service.TechLeadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class TechLeadController {
     private String delete(String id){
         techLeadService.delete(id);
         return "Deleted!";
+    }
+    @GetMapping(params = "id")
+    private String viewProject(String id) {
+        TechLeadDto dto = techLeadService.view(id);
+        return dto.toString();
     }
 }
