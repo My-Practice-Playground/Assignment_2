@@ -33,19 +33,19 @@ public class TechLeadServiceImpl implements TechLeadService {
 
     @Override
     public void update(TechLeadDto dto) {
-        if (!repository.existsById(dto.id())) throw new RuntimeException("Techlead not found !");
+        if (!repository.existsById(dto.id())) throw new RuntimeException("Tech lead not found !");
         repository.updateNameSalaryById(dto.name(), dto.salary(), dto.id());
     }
 
     @Override
     public void delete(String id) {
-        if (!repository.existsById(id)) throw new RuntimeException("Techlead not found !");
+        if (!repository.existsById(id)) throw new RuntimeException("Tech lead not found !");
         repository.deleteById(id);
     }
 
     @Override
     public TechLeadDto view(String id) {
-        if (!repository.existsById(id)) throw new RuntimeException("Techlead not found !");
+        if (!repository.existsById(id)) throw new RuntimeException("Tech lead not found !");
         TechLead entity = repository.getTechLeadById(id);
         return new TechLeadDto(entity.getId(), entity.getName(), entity.getSalary(), setProjects(entity));
     }
