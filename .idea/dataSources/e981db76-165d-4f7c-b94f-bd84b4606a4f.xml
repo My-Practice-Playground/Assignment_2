@@ -1087,8 +1087,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="296" parent="1" name="pm">
-      <IntrospectionTimestamp>2023-09-17.05:35:58</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-09-16.18:35:58</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-09-17.21:28:57</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-09-17.10:28:57</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="297" parent="1" name="customerService">
@@ -1130,90 +1130,117 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="306" parent="303" name="id">
+    <table id="306" parent="296" name="techlead">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="307" parent="303" name="id">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="307" parent="303" name="address">
+    <column id="308" parent="303" name="address">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="308" parent="303" name="name">
+    <column id="309" parent="303" name="name">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="309" parent="303" name="salary">
+    <column id="310" parent="303" name="salary">
       <DasType>double|0s</DasType>
       <Position>4</Position>
     </column>
-    <index id="310" parent="303" name="PRIMARY">
+    <index id="311" parent="303" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="311" parent="303" name="PRIMARY">
+    <key id="312" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="312" parent="304" name="salary">
+    <column id="313" parent="304" name="salary">
       <DasType>double|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="313" parent="304" name="id">
+    <column id="314" parent="304" name="id">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="314" parent="304" name="name">
+    <column id="315" parent="304" name="name">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <index id="315" parent="304" name="PRIMARY">
+    <index id="316" parent="304" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="316" parent="304" name="PRIMARY">
+    <key id="317" parent="304" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="317" parent="305" name="price">
+    <column id="318" parent="305" name="price">
       <DasType>double|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="318" parent="305" name="description">
+    <column id="319" parent="305" name="description">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="319" parent="305" name="id">
+    <column id="320" parent="305" name="id">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="320" parent="305" name="techlead_id">
+    <column id="321" parent="305" name="techlead_id">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="321" parent="305" name="FKjv32ckd244xojn890sejgm07c">
+    <foreign-key id="322" parent="305" name="FK8chhkow0kyvstj7n8qq3nnnjx">
       <ColNames>techlead_id</ColNames>
       <RefColNames>id</RefColNames>
-      <RefTableName>Techlead</RefTableName>
+      <RefTableName>techlead</RefTableName>
     </foreign-key>
-    <index id="322" parent="305" name="PRIMARY">
+    <index id="323" parent="305" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="323" parent="305" name="FKjv32ckd244xojn890sejgm07c">
+    <index id="324" parent="305" name="FK8chhkow0kyvstj7n8qq3nnnjx">
       <ColNames>techlead_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="324" parent="305" name="PRIMARY">
+    <key id="325" parent="305" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="326" parent="306" name="salary">
+      <DasType>double|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="327" parent="306" name="id">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="328" parent="306" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <index id="329" parent="306" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="330" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
