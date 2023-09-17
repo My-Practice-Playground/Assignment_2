@@ -33,7 +33,8 @@ public class TechLeadServiceImpl implements TechLeadService {
 
     @Override
     public void delete(String id) {
-
+        if (!repository.existsById(id)) throw new RuntimeException("tl does not exists!");
+        repository.deleteById(id);
     }
 
     @Override
