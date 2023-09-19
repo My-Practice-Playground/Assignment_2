@@ -16,24 +16,53 @@ public class ProjectController {
 
     @PostMapping
     String saveProject(@RequestBody ProjectDto project) {
+        if (project == null) {
+            return "Empty project details. Please check again!";
+        } else if (!project.id().matches("P0\\d{3,}")) {
+            return "Invalid Project Id!";
+        } else if (!project.description().matches("^[A-Za-z0-9\\s]*$")) {
+            return "invalid Project Description!";
+        } else if (!String.valueOf(project.price()).matches("^-?\\d+(\\.\\d+)?$")) {
+            return "Invalid Project Price!";
+        }
         projectService.save(project);
         return "saved!";
     }
 
     @DeleteMapping(params = "id")
     private String delete(String id) {
+        if (id == null) {
+            return "Empty project details. Please check again!";
+        } else if (id.matches("P0\\d{3,}")) {
+            return "Invalid Project Id!";
+        }
         projectService.delete(id);
         return "deleted!";
     }
 
     @PutMapping
-    private String update(@RequestBody ProjectDto projectDto) {
-        projectService.update(projectDto);
+    private String update(@RequestBody ProjectDto project) {
+        if (project == null) {
+            return "Empty project details. Please check again!";
+        } else if (!project.id().matches("P0\\d{3,}")) {
+            return "Invalid Project Id!";
+        } else if (!project.description().matches("^[A-Za-z0-9\\s]*$")) {
+            return "invalid Project Description!";
+        } else if (!String.valueOf(project.price()).matches("^-?\\d+(\\.\\d+)?$")) {
+            return "Invalid Project Price!";
+        }
+        projectService.update(project);
+
         return "updated!";
     }
 
     @GetMapping(params = "id")
     private String viewProject(String id) {
+        if (id == null) {
+            return "Empty project details. Please check again!";
+        } else if (!id.matches("P0\\d{3,}")) {
+            return "Invalid Project Id!";
+        }
         ProjectDto dto = projectService.view(id);
         return dto.toString();
     }
