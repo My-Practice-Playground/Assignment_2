@@ -4,6 +4,7 @@ import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.dto.TechLeadDto;
 import com.example.assignment.service.TechLeadService;
 import com.example.assignment.service.util.ProjectNotFoundException;
+import com.example.assignment.service.util.TechleadNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,7 @@ public class TechLeadController {
             } else if (!String.valueOf(dto.salary()).matches("^-?\\d+(\\.\\d+)?$")) {
                 return "Invalid salary record!";
             }
-        } catch (NumberFormatException e) {
-            return e.getMessage();
-        }catch (RuntimeException e){
+        } catch (RuntimeException e){
             return e.getMessage();
         }
         techLeadService.save(dto);
@@ -44,7 +43,7 @@ public class TechLeadController {
         try {
             techLeadService.delete(id);
             return "Successfully deleted!";
-        } catch (ProjectNotFoundException e) {
+        } catch (TechleadNotFoundException e) {
             return "Tech lead does not exists!";
         } catch (RuntimeException e) {
             return e.getMessage();
@@ -62,7 +61,7 @@ public class TechLeadController {
         try {
             TechLeadDto dto = techLeadService.view(id);
             return dto.toString();
-        } catch (ProjectNotFoundException e) {
+        } catch (TechleadNotFoundException e) {
             return "Tech Lead does not exists! ";
         } catch (RuntimeException e) {
             return e.getMessage();
