@@ -37,8 +37,15 @@ public class ProjectController {
         } else if (id.matches("P0\\d{3,}")) {
             return "Invalid Project Id!";
         }
-        projectService.delete(id);
-        return "deleted!";
+
+        try {
+            projectService.delete(id);
+            return "Successfully deleted!";
+        } catch (ProjectNotFoundException e) {
+            return "Project not exists!";
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
     }
 
     @PutMapping
