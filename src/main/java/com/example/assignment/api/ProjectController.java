@@ -17,17 +17,21 @@ public class ProjectController {
 
     @PostMapping
     String saveProject(@RequestBody ProjectDto project) {
-        if (project == null) {
-            return "Empty project details. Please check again!";
-        } else if (!project.id().matches("P0\\d{3,}")) {
-            return "Invalid Project Id!";
-        } else if (!project.description().matches("^[A-Za-z0-9\\s]*$")) {
-            return "invalid Project Description!";
-        } else if (!String.valueOf(project.price()).matches("^-?\\d+(\\.\\d+)?$")) {
-            return "Invalid Project Price!";
+        try {
+            if (project == null) {
+                return "Empty project details. Please check again!";
+            } else if (!project.id().matches("P\\d{3,}")) {
+                return "Invalid Project Id!";
+            } else if (!project.description().matches("^[A-Za-z0-9\\s]*$")) {
+                return "invalid Project Description!";
+            } else if (!String.valueOf(project.price()).matches("^-?\\d+(\\.\\d+)?$")) {
+                return "Invalid Project Price!";
+            }
+        } catch (RuntimeException e) {
+            return e.getMessage();
         }
         projectService.save(project);
-        return "saved!";
+        return "Project successfully saved!";
     }
 
     @DeleteMapping(params = "id")
@@ -71,7 +75,7 @@ public class ProjectController {
     }
 
     @GetMapping(params = "id")
-    private String viewProject(String id) {
+    private String view(String id) {
         if (id == null) {
             return "Empty project details! ";
         } else if (!id.matches("P0\\d{3,}")) {
