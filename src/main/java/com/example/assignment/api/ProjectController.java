@@ -66,11 +66,18 @@ public class ProjectController {
     @GetMapping(params = "id")
     private String viewProject(String id) {
         if (id == null) {
-            return "Empty project details. Please check again!";
+            return "Empty project details! ";
         } else if (!id.matches("P0\\d{3,}")) {
             return "Invalid Project Id!";
         }
-        ProjectDto dto = projectService.view(id);
-        return dto.toString();
+
+        try {
+            ProjectDto dto = projectService.view(id);
+            return dto.toString();
+        } catch (ProjectNotFoundException e) {
+            return "Project not Found! ";
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
     }
 }
