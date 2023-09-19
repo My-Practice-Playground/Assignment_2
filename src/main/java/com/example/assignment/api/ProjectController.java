@@ -2,6 +2,7 @@ package com.example.assignment.api;
 
 import com.example.assignment.dto.ProjectDto;
 import com.example.assignment.service.ProjectService;
+import com.example.assignment.service.util.ProjectNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -51,9 +52,15 @@ public class ProjectController {
         } else if (!String.valueOf(project.price()).matches("^-?\\d+(\\.\\d+)?$")) {
             return "Invalid Project Price!";
         }
-        projectService.update(project);
 
-        return "updated!";
+        try {
+            projectService.update(project);
+            return "Project updated successfully!";
+        } catch (ProjectNotFoundException e) {
+            return "Project not found !";
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
     }
 
     @GetMapping(params = "id")
