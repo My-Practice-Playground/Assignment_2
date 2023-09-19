@@ -25,7 +25,9 @@ public class TechLeadController {
             } else if (!String.valueOf(dto.salary()).matches("^-?\\d+(\\.\\d+)?$")) {
                 return "Invalid salary record!";
             }
-        } catch (RuntimeException e) {
+        } catch (NumberFormatException e) {
+            return e.getMessage();
+        }catch (RuntimeException e){
             return e.getMessage();
         }
         techLeadService.save(dto);
