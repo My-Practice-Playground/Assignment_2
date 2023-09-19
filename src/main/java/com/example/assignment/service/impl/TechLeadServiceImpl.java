@@ -5,6 +5,7 @@ import com.example.assignment.dto.TechLeadDto;
 import com.example.assignment.entity.custom.TechLead;
 import com.example.assignment.repo.TechleadRepository;
 import com.example.assignment.service.TechLeadService;
+import com.example.assignment.service.util.TechleadNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,20 +33,20 @@ public class TechLeadServiceImpl implements TechLeadService {
     }
 
     @Override
-    public void update(TechLeadDto dto) {
-        if (!repository.existsById(dto.id())) throw new RuntimeException("Tech lead not found !");
+    public void update(TechLeadDto dto) throws TechleadNotFoundException {
+        if (!repository.existsById(dto.id())) throw new TechleadNotFoundException();
         repository.updateNameSalaryById(dto.name(), dto.salary(), dto.id());
     }
 
     @Override
-    public void delete(String id) {
-        if (!repository.existsById(id)) throw new RuntimeException("Tech lead not found !");
+    public void delete(String id)  throws TechleadNotFoundException{
+        if (!repository.existsById(id)) throw new TechleadNotFoundException();
         repository.deleteById(id);
     }
 
     @Override
-    public TechLeadDto view(String id) {
-        if (!repository.existsById(id)) throw new RuntimeException("Tech lead not found !");
+    public TechLeadDto view(String id)  throws TechleadNotFoundException{
+        if (!repository.existsById(id)) throw new TechleadNotFoundException();
         TechLead entity = repository.getTechLeadById(id);
         return new TechLeadDto(entity.getId(), entity.getName(), entity.getSalary(), setProjects(entity));
     }
