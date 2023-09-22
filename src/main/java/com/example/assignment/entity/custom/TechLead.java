@@ -1,5 +1,6 @@
 package com.example.assignment.entity.custom;
 
+import com.example.assignment.entity.SuperEntity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "techlead")
-public class TechLead {
+public class TechLead implements SuperEntity {
     @OneToMany(targetEntity = Project.class, mappedBy = "techlead", cascade = CascadeType.REMOVE)
     List<Project> projectList = new ArrayList<>();
     @Id
